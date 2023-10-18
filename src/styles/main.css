@@ -5,3 +5,11 @@
 .article {
     text-align: center;
 }
+
+.article-container {
+    text-align: center;
+}
+
+#article-form {
+    display: none;
+}
