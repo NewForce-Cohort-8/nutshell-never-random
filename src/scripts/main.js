@@ -1,6 +1,11 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
+import { fetchArticles } from "./dataAccess.js"
+import { fetchImages } from "./dataAccess.js"
+import { fetchMessages } from "./dataAccess.js"
+import { fetchUsers } from "./dataAccess.js"
+import { fetchTasks } from "./dataAccess.js"
 
 
 /*
@@ -14,9 +19,20 @@ import { Nutshell } from "./Nutshell.js"
 
 const activeUser = sessionStorage.getItem("activeUser")
 
-if(!activeUser){
-    LoginForm()
-    RegisterForm()
-} else {
-    Nutshell()
+const render = () => {
+    fetchArticles()
+    fetchImages()
+    fetchMessages()
+    fetchUsers()
+    fetchTasks()
+    .then(() => {
+        if(!activeUser){
+            LoginForm()
+            RegisterForm()
+        } else {
+            Nutshell()
+        }
+    })
 }
+
+render()
