@@ -13,7 +13,7 @@ const render = () => {
                 return `<section class="article" id="article-${article.id}">
                 <h2>${article.title}</h2>
                 <button><a href="${article.url}" target="_blank">Read Now</a></button>
-                <p>Synopsis: ${article.synopsis}</p>
+                <p><strong>Synopsis:</strong> ${article.synopsis}</p>
                 </section>
                 <hr>`
             }
