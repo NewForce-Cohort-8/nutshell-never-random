@@ -31,7 +31,8 @@ mainContainer.addEventListener("click", click => {
            title: userNewsTitle,
            url: userNewsURL,
            synopsis: userNewsSynopsis,
-           timestamp: timestamp
+           timestamp: timestamp,
+           userId: parseInt(sessionStorage.activeUser)
        }
        // Send the data to the API for permanent storage
        saveArticle(dataToSendToAPI)
@@ -42,9 +43,10 @@ mainContainer.addEventListener("click", click => {
 
 const render = () => {
     const articles = getArticles();
+    console.log(sessionStorage)
     contentTarget.innerHTML += `<div class="article-container">
     <button id="new-article">New Article</button>
-    <form id="article-form">
+    <form id="article-form" style="display: none">
     <div class="field">
     <label class="label" for="newsTitle">Article Title</label>
     <br>
