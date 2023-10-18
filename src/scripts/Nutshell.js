@@ -1,10 +1,12 @@
 import {LogOutButton} from "./auth/LogoutButton.js"
 import { articleHTML } from "./articles.js"
+import { messageHTML } from "./Messages.js"
 
 export const Nutshell = () => {
 
-    LogOutButton()
+    LogOutButton();
       // Render all your UI components here
-    articleHTML()
+    articleHTML();
+    messageHTML();
 
 }

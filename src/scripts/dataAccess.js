@@ -61,3 +61,11 @@ export const fetchEvents = () => {
 export const getArticles = () => {
     return applicationState.articles.map(article => ({...article}))
 }
+
+export const getMessages = () => {
+    return applicationState.messages.map(message => ({...message}))
+}
+
+export const getUsers = () => {
+    return applicationState.users.map(user => ({...user}))
+}

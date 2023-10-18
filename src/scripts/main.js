@@ -2,6 +2,8 @@ import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
 import { fetchArticles } from "./dataAccess.js"
+import { fetchMessages } from "./dataAccess.js"
+import { fetchUsers } from "./dataAccess.js"
 
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -15,6 +17,8 @@ const activeUser = sessionStorage.getItem("activeUser")
 
 const render = () => {
     fetchArticles()
+    fetchMessages()
+    fetchUsers()
         .then(() => {
             if(!activeUser){
                 LoginForm()
