@@ -1,10 +1,9 @@
-const applicationState = {
+const applicationState =  {
     users: [],
-    messages: [],
     articles: [],
-    tasks: [],
-    events: [],
-    images: []
+    images: [],
+    messages: [],
+    tasks: []
 }
 
 const API = "http://localhost:8088"
@@ -13,18 +12,8 @@ export const fetchUsers = () => {
     return fetch(`${API}/users`)
         .then(response => response.json())
         .then(
-            (users) => {
-                applicationState.users = users
-            }
-        )
-}
-
-export const fetchMessages = () => {
-    return fetch(`${API}/messages`)
-        .then(response => response.json())
-        .then(
-            (messages) => {
-                applicationState.messages = messages
+            (data) => {
+                applicationState.users = data
             }
         )
 }
@@ -33,28 +22,8 @@ export const fetchArticles = () => {
     return fetch(`${API}/articles`)
         .then(response => response.json())
         .then(
-            (articles) => {
-                applicationState.articles = articles
-            }
-        )
-}
-
-export const fetchEvents = () => {
-    return fetch(`${API}/Events`)
-        .then(response => response.json())
-        .then(
-            (events) => {
-                applicationState.events = events
-            }
-        )
-}
-
-export const fetchTasks = () => {
-    return fetch(`${API}/Tasks`)
-        .then(response => response.json())
-        .then(
-            (tasks) => {
-                applicationState.tasks = tasks
+            (data) => {
+                applicationState.articles = data
             }
         )
 }
@@ -63,8 +32,32 @@ export const fetchImages = () => {
     return fetch(`${API}/images`)
         .then(response => response.json())
         .then(
-            (images) => {
-                applicationState.images = images
+            (data) => {
+                applicationState.images = data
             }
         )
+}
+
+export const fetchMessages = () => {
+    return fetch(`${API}/messages`)
+        .then(response => response.json())
+        .then(
+            (data) => {
+                applicationState.messages = data
+            }
+        )
+}
+
+export const fetchEvents = () => {
+    return fetch(`${API}/events`)
+        .then(response => response.json())
+        .then(
+            (data) => {
+                applicationState.events = data
+            }
+        )
+}
+
+export const getArticles = () => {
+    return applicationState.articles.map(article => ({...article}))
 }

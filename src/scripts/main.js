@@ -1,7 +1,7 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
-
+import { fetchArticles } from "./dataAccess.js"
 
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -11,12 +11,19 @@ import { Nutshell } from "./Nutshell.js"
         ensure that the Nutshell component gets rendered
 */
 
-
 const activeUser = sessionStorage.getItem("activeUser")
 
-if(!activeUser){
-    LoginForm()
-    RegisterForm()
-} else {
-    Nutshell()
+const render = () => {
+    fetchArticles()
+        .then(() => {
+            if(!activeUser){
+                LoginForm()
+                RegisterForm()
+            } else {
+                Nutshell()
+            }
+        })
+
 }
+
+render()
