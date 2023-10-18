@@ -10,4 +10,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+.messageUser, .messageDeleteButton {
+    display: inline;
 }

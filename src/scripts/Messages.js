@@ -14,10 +14,18 @@ const render = () => {
                 const user = users.find(user => user.id === message.userId);
                 return `<section class="message" id="message-${message.id}">
                 <p class="messageUser">${user.email}: ${message.message}</p>
+                
+                <button class="messageDeleteButton">Delete Message</button>
                 </section>
-                <hr>`
+                `
             }
         ).join("")}
+
+        <div class="postMessage">
+        <input type="text" placeholder="Type your message here...">
+        <button id="postMessageButton">Post Message</button>
+        </div>
+
     </div>`
 }
 
