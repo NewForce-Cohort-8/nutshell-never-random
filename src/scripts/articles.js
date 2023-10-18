@@ -17,8 +17,7 @@ const render = () => {
                 </section>
                 <hr>`
             }
-        )
-    }
+        ).join("")}
     </div>`
 }
 
