@@ -6,7 +6,7 @@ const contentTarget = document.querySelector(".dashboard")
 
 const render = () => {
     const articles = getArticles();
-    return `<div class="article-container">
+    contentTarget.innerHTML += `<div class="article-container">
     ${
         articles.map(
             article => {
