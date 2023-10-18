@@ -16,7 +16,6 @@ import { fetchTasks } from "./dataAccess.js"
         ensure that the Nutshell component gets rendered
 */
 
-
 const activeUser = sessionStorage.getItem("activeUser")
 
 const render = () => {

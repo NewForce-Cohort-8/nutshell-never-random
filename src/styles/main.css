@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Classy";
+  src: url(/fonts/Classy-Vogue-Stylish-Serif-Font-Demo.zip);
+}
+
+.article p {
+    font-style: italic
+}
+
+.article {
+    text-align: center;
+}
