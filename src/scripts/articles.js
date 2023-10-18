@@ -6,14 +6,20 @@ const contentTarget = document.querySelector(".dashboard")
 
 const render = () => {
     const articles = getArticles();
-    for (const article of articles) {
-        contentTarget.innerHTML += `<section class="article" id="article-${article.id}">
-        <h2>${article.title}</h2>
-        <button><a href="${article.url}" target="_blank">Read Now</a></button>
-        <p>Synopsis: ${article.synopsis}</p>
-        </section>
-        <hr>`
+    return `<div class="article-container">
+    ${
+        articles.map(
+            article => {
+                return `<section class="article" id="article-${article.id}">
+                <h2>${article.title}</h2>
+                <button><a href="${article.url}" target="_blank">Read Now</a></button>
+                <p>Synopsis: ${article.synopsis}</p>
+                </section>
+                <hr>`
+            }
+        )
     }
+    </div>`
 }
 
 export const articleHTML = () => {
