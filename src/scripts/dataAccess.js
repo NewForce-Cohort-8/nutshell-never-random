@@ -69,3 +69,30 @@ export const getMessages = () => {
 export const getUsers = () => {
     return applicationState.users.map(user => ({...user}))
 }
+
+export const deleteArticle = (id) => {
+    return fetch(`${API}/articles/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
+
+export const saveArticle = (newArticle) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newArticle)
+    }
+
+
+    return fetch(`${API}/articles`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+

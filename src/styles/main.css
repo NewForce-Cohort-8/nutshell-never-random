@@ -16,3 +16,7 @@
 .messageUser, .messageDeleteButton {
     display: inline;
 }
+
+.article-container {
+    text-align: center;
+}

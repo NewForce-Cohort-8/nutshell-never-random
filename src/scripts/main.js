@@ -14,6 +14,7 @@ import { fetchUsers } from "./dataAccess.js"
 */
 
 const activeUser = sessionStorage.getItem("activeUser")
+const mainContainer = document.querySelector(".container")
 
 const render = () => {
     fetchArticles()
@@ -31,3 +32,10 @@ const render = () => {
 }
 
 render()
+
+mainContainer.addEventListener(
+    "stateChanged",
+    customEvent => {
+        render()
+    }
+)
