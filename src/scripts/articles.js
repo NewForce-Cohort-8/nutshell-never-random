@@ -2,7 +2,6 @@
 
 import {getArticles, deleteArticle, saveArticle} from "./dataAccess.js";
 
-const contentTarget = document.querySelector(".dashboard")
 const mainContainer = document.querySelector(".container")
 
 mainContainer.addEventListener("click", click => {
@@ -41,10 +40,12 @@ mainContainer.addEventListener("click", click => {
 })
 
 
-const render = () => {
+export const articleHTML = () => {
     const articles = getArticles();
-    console.log(sessionStorage)
-    contentTarget.innerHTML += `<div class="article-container">
+    articles.sort((a,b) => {
+        return b.timestamp - a.timestamp
+    })
+    return `<div class="article-container">
     <button id="new-article">New Article</button>
     <form id="article-form" style="display: none">
     <div class="field">
@@ -80,9 +81,5 @@ const render = () => {
             }
         ).join("")}
     </div>`
-}
-
-export const articleHTML = () => {
-    render()
 }
 

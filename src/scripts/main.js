@@ -12,7 +12,7 @@ import { fetchArticles } from "./dataAccess.js"
 */
 
 const activeUser = sessionStorage.getItem("activeUser")
-const mainContainer = document.querySelector(".container")
+const mainContainer = document.querySelector(".dashboard")
 
 const render = () => {
     fetchArticles()
@@ -21,7 +21,7 @@ const render = () => {
                 LoginForm()
                 RegisterForm()
             } else {
-                Nutshell()
+                mainContainer.innerHTML = Nutshell()
             }
         })
 
