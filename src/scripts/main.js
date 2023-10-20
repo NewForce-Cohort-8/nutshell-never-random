@@ -1,7 +1,7 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
-import { fetchArticles, fetchEvents, fetchImages, fetchMessages, fetchUsers, fetchTasks } from "./dataAccess.js"
+import { fetchArticles, fetchImages, fetchMessages, fetchUsers, fetchTasks } from "./dataAccess.js"
 
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -19,7 +19,6 @@ const render = () => {
         .then(fetchTasks)
         .then(fetchMessages)
         .then(fetchImages)
-        .then(fetchEvents)
         .then(fetchUsers)
         .then(() => {
             if(!activeUser){
