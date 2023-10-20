@@ -1,9 +1,9 @@
-const applicationState =  {
+const applicationState = {
     users: [],
     articles: [],
     images: [],
     messages: [],
-    tasks: []
+    tasks: [],
 }
 
 const API = "http://localhost:8088"
@@ -12,57 +12,52 @@ const mainContainer = document.querySelector(".dashboard")
 
 export const fetchUsers = () => {
     return fetch(`${API}/users`)
-        .then(response => response.json())
-        .then(
-            (data) => {
-                applicationState.users = data
-            }
-        )
+    .then(response => response.json())
+    .then(
+        (users) => {
+            applicationState.users = users
+        }
+    )
 }
 
 export const fetchArticles = () => {
     return fetch(`${API}/articles`)
-        .then(response => response.json())
-        .then(
-            (data) => {
-                applicationState.articles = data
-            }
-        )
+    .then(response => response.json())
+    .then(
+        (articles) => {
+            applicationState.articles = articles
+        }
+    )
 }
 
 export const fetchImages = () => {
     return fetch(`${API}/images`)
-        .then(response => response.json())
-        .then(
-            (data) => {
-                applicationState.images = data
-            }
-        )
+    .then(response => response.json())
+    .then(
+        (images) => {
+            applicationState.images = images
+        }
+    )
 }
 
 export const fetchMessages = () => {
     return fetch(`${API}/messages`)
-        .then(response => response.json())
-        .then(
-            (data) => {
-                applicationState.messages = data
-            }
-        )
+    .then(response => response.json())
+    .then(
+        (messages) => {
+            applicationState.messages = messages
+        }
+    )
 }
 
-export const fetchEvents = () => {
-    return fetch(`${API}/events`)
-        .then(response => response.json())
-        .then(
-            (data) => {
-                applicationState.events = data
-            }
-        )
-}
-export const getArticles = () => {
+
+export const getArticles  = () => {
     return applicationState.articles.map(article => ({...article}))
 }
 
+export const getImages  = () => {
+    return applicationState.images.map(image => ({...image}))
+}
 
 export const fetchTasks = () => {
     return fetch(`${API}/tasks`)
@@ -138,6 +133,30 @@ export const saveArticle = (newArticle) => {
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
+
+        export const deleteImage = (id) => {
+            return fetch(`${API}/images/${id}`, { method: "DELETE" })
+                .then(
+                    () => {
+                        mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+                    }
+                )
+            }
+        
+            export const saveImage = (newImage) => {
+            const fetchOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newImage)
+            }
+            return fetch(`${API}/images`, fetchOptions)
+            .then(response => response.json())
+            .then(() => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            })
+        }
 
 export const deleteMessage = (id) => {
     return fetch(`${API}/messages/${id}`, { method: "DELETE" })
