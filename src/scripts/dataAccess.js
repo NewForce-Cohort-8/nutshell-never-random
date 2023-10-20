@@ -7,6 +7,8 @@ const applicationState = {
 }
 
 const API = "http://localhost:8088"
+const mainContainer = document.querySelector(".dashboard")
+
 
 export const fetchUsers = () => {
     return fetch(`${API}/users`)
@@ -48,15 +50,6 @@ export const fetchMessages = () => {
     )
 }
 
-export const fetchTasks = () => {
-    return fetch(`${API}/tasks`)
-    .then(response => response.json())
-    .then(
-        (tasks) => {
-            applicationState.tasks = tasks
-        }
-    )
-}
 
 export const getArticles  = () => {
     return applicationState.articles.map(article => ({...article}))
@@ -66,16 +59,53 @@ export const getImages  = () => {
     return applicationState.images.map(image => ({...image}))
 }
 
-export const getMessages  = () => {
+export const fetchTasks = () => {
+    return fetch(`${API}/tasks`)
+        .then(response => response.json())
+        .then(
+            (data) => {
+                applicationState.tasks = data
+            }
+        )
+}
+
+export const getTasks = () => {
+    return applicationState.tasks.map(task => ({...task}))
+}
+
+export const sendTask = (userTask) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userTask)
+    }
+
+
+    return fetch(`${API}/tasks`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+
+export const deleteTask = (id) => {
+    const mainContainer = document.querySelector(".dashboard")
+    return fetch(`${API}/tasks/${id}`, { method: "DELETE" })
+        .then(() => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
+
+
+export const getMessages = () => {
     return applicationState.messages.map(message => ({...message}))
 }
 
-export const getUsers  = () => {
+export const getUsers = () => {
     return applicationState.users.map(user => ({...user}))
-}
-
-export const getTasks  = () => {
-    return applicationState.tasks.map(task => ({...task}))
 }
 
 export const deleteArticle = (id) => {
@@ -128,3 +158,28 @@ export const saveArticle = (newArticle) => {
             })
         }
 
+export const deleteMessage = (id) => {
+    return fetch(`${API}/messages/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
+
+export const saveMessage = (newMessage) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMessage)
+    }
+
+
+    return fetch(`${API}/messages`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
