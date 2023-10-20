@@ -57,7 +57,7 @@ mainContainer.addEventListener("click", clickEvent => {
         const newEventName = document.querySelector("input[name='new-event-name']").value;
         const newEventLocation = document.querySelector("input[name='new-event-location']").value
         const newEvent = {
-            name: newEventName,
+            eventName: newEventName,
             date: newEventDate,
             location: newEventLocation
         }

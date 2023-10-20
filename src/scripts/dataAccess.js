@@ -212,3 +212,13 @@ export const saveEvent = (event) => {
         .then(() => {
             dashboard.dispatchEvent(new CustomEvent("stateChanged"))
         })}
+
+        export const fetchEvents = () => {
+            return fetch(`${API}/Events`)
+                .then(response => response.json())
+                .then(
+                    (data) => {
+                        applicationState.events = data
+                    }
+                )
+        }
