@@ -14,6 +14,5 @@ eventHub.addEventListener("click", (eventObject) => {
 
         // clear the DOM
         document.querySelector(".dashboard").dispatchEvent(new CustomEvent("stateChanged"))
-
     }
 })
