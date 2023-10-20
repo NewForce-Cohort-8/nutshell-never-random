@@ -4,9 +4,9 @@ import {getArticles} from "./dataAccess.js";
 
 const contentTarget = document.querySelector(".dashboard")
 
-const render = () => {
+export const articleHTML = () => {
     const articles = getArticles();
-    contentTarget.innerHTML += `<div class="article-container">
+    return `<div class="article-container">
     ${
         articles.map(
             article => {
@@ -20,8 +20,3 @@ const render = () => {
         ).join("")}
     </div>`
 }
-
-export const articleHTML = () => {
-    render()
-}
-

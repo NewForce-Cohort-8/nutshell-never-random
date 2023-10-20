@@ -5,7 +5,7 @@ const eventHub = document.querySelector(".dashboard")
 const contentTarget = document.querySelector(".dashboard")
 
 export const LogOutButton = () => {
-    contentTarget.innerHTML += `<button id="logout-button">Log Out</button>`
+    return `<button id="logout-button">Log Out</button>`
 }
 
 eventHub.addEventListener("click", (eventObject) => {
@@ -14,10 +14,6 @@ eventHub.addEventListener("click", (eventObject) => {
         sessionStorage.clear()
 
         // clear the DOM
-        document.querySelector(".dashboard").innerHTML = ""
-
-        // Reprint the login and register form
-        LoginForm()
-        RegisterForm()
+        document.querySelector(".dashboard").dispatchEvent(new CustomEvent("stateChanged"))
     }
 })

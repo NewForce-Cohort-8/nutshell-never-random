@@ -3,9 +3,11 @@ const applicationState =  {
     articles: [],
     images: [],
     messages: [],
-    tasks: []
+    tasks: [],
+    events: []
 }
 
+const dashboard = document.querySelector(".dashboard")
 const API = "http://localhost:8088"
 
 export const fetchUsers = () => {
@@ -61,3 +63,29 @@ export const fetchEvents = () => {
 export const getArticles = () => {
     return applicationState.articles.map(article => ({...article}))
 }
+
+      //Event stuff.- NH
+export const getEvents = () => {
+    return applicationState.events.map(event => ({...event}))
+}
+
+export const deleteEvent = (id) => {
+    return fetch(`${API}/events/${id}`, {method: "DELETE"})
+    .then(() => {
+        dashboard.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
+export const saveEvent = (event) => {
+    const fetchOptions = {
+        method: "POST", 
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(event)
+    }
+
+
+        return fetch(`${API}/events`, fetchOptions)
+        .then(response => response.json)
+        .then(() => {
+            dashboard.dispatchEvent(new CustomEvent("stateChanged"))
+        })}
