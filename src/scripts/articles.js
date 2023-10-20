@@ -41,10 +41,10 @@ mainContainer.addEventListener("click", click => {
 })
 
 
-const render = () => {
+export const articleHTML = () => {
     const articles = getArticles();
     console.log(sessionStorage)
-    contentTarget.innerHTML += `<div class="article-container">
+    return `<div class="article-container">
     <button id="new-article">New Article</button>
     <form id="article-form" style="display: none">
     <div class="field">
@@ -82,7 +82,5 @@ const render = () => {
     </div>`
 }
 
-export const articleHTML = () => {
-    render()
-}
+
 

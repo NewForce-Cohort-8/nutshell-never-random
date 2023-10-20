@@ -4,9 +4,9 @@ import { messageHTML } from "./Messages.js"
 
 export const Nutshell = () => {
 
-    LogOutButton();
-      // Render all your UI components here
-    articleHTML();
-    messageHTML();
+  return `${LogOutButton()}
+    ${articleHTML()}
+    ${messageHTML()}
+    `
 
 }

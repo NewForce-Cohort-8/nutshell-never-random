@@ -35,7 +35,7 @@ eventHub.addEventListener("click", (e) => {
                 document.querySelector(".auth--register").innerHTML = "";
 
                 // print the page
-                Nutshell();
+              Nutshell();
               });
           } else {
             // If the user does already exist, throw an alert

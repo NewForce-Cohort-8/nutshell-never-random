@@ -14,20 +14,20 @@ import { fetchUsers } from "./dataAccess.js"
 */
 
 const activeUser = sessionStorage.getItem("activeUser")
-const mainContainer = document.querySelector(".container")
+const mainContainer = document.querySelector(".dashboard")
 
 const render = () => {
     fetchArticles()
-    fetchMessages()
-    fetchUsers()
-        .then(() => {
-            if(!activeUser){
-                LoginForm()
-                RegisterForm()
-            } else {
-                Nutshell()
-            }
-        })
+    .then(fetchMessages)
+    .then(fetchUsers)
+    .then(() => {
+        if(!activeUser){
+            LoginForm()
+            RegisterForm()
+        } else {
+            mainContainer.innerHTML = Nutshell()
+        }
+    })
 
 }
 
