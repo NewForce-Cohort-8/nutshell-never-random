@@ -9,6 +9,7 @@ const applicationState =  {
 const API = "http://localhost:8088"
 const mainContainer = document.querySelector(".dashboard")
 
+
 export const fetchUsers = () => {
     return fetch(`${API}/users`)
         .then(response => response.json())
@@ -63,6 +64,14 @@ export const getArticles = () => {
     return applicationState.articles.map(article => ({...article}))
 }
 
+export const getMessages = () => {
+    return applicationState.messages.map(message => ({...message}))
+}
+
+export const getUsers = () => {
+    return applicationState.users.map(user => ({...user}))
+}
+
 export const deleteArticle = (id) => {
     return fetch(`${API}/articles/${id}`, { method: "DELETE" })
         .then(
@@ -89,3 +98,28 @@ export const saveArticle = (newArticle) => {
         })
 }
 
+export const deleteMessage = (id) => {
+    return fetch(`${API}/messages/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
+
+export const saveMessage = (newMessage) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMessage)
+    }
+
+
+    return fetch(`${API}/messages`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
