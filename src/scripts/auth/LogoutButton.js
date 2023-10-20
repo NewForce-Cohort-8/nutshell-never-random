@@ -4,7 +4,7 @@ import { RegisterForm } from "./RegisterForm.js"
 const eventHub = document.querySelector(".dashboard")
 
 export const LogOutButton = () => {
-    return `<button id="logout-button">Log Out</button>`
+return `<button id="logout-button">Log Out</button>`
 }
 
 eventHub.addEventListener("click", (eventObject) => {
@@ -14,5 +14,7 @@ eventHub.addEventListener("click", (eventObject) => {
 
         // clear the DOM
         document.querySelector(".dashboard").dispatchEvent(new CustomEvent("stateChanged"))
+
+     
     }
 })
