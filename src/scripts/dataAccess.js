@@ -4,8 +4,10 @@ const applicationState = {
     images: [],
     messages: [],
     tasks: [],
+    events: []
 }
 
+const dashboard = document.querySelector(".dashboard")
 const API = "http://localhost:8088"
 const mainContainer = document.querySelector(".dashboard")
 
@@ -183,3 +185,40 @@ export const saveMessage = (newMessage) => {
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
+
+
+      // Event stuff. - NH
+export const getEvents = () => {
+    return applicationState.events.map(event => ({...event}))
+}
+
+export const deleteEvent = (id) => {
+    return fetch(`${API}/events/${id}`, {method: "DELETE"})
+    .then(() => {
+        dashboard.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
+export const saveEvent = (event) => {
+    const fetchOptions = {
+        method: "POST", 
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(event)
+    }
+
+
+        return fetch(`${API}/events`, fetchOptions)
+        .then(response => response.json)
+        .then(() => {
+            dashboard.dispatchEvent(new CustomEvent("stateChanged"))
+        })}
+
+        export const fetchEvents = () => {
+            return fetch(`${API}/Events`)
+                .then(response => response.json())
+                .then(
+                    (data) => {
+                        applicationState.events = data
+                    }
+                )
+        }

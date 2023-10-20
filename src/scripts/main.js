@@ -2,6 +2,7 @@ import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
 import { fetchArticles, fetchImages, fetchMessages, fetchUsers, fetchTasks } from "./dataAccess.js"
+import { fetchEvents } from "./dataAccess.js"
 
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -16,6 +17,7 @@ const mainContainer = document.querySelector(".dashboard")
 
 const render = () => {
     fetchArticles()
+        .then(fetchEvents)
         .then(fetchTasks)
         .then(fetchMessages)
         .then(fetchImages)
@@ -34,7 +36,7 @@ const render = () => {
 render()
 
 mainContainer.addEventListener(
-    "stateChanged",
+    "stateChanged", 
     customEvent => {
         render()
     }
