@@ -64,8 +64,9 @@ export const articleHTML = () => {
     <br>
     <input type="text" name="newsSynopsis" class="input" />
     </div>
-    <button class="button" id="submitRequest">Submit Request</button>
+    <button class="button" id="submitRequest">Submit Article</button>
     </form>
+    <h1>News Articles</h1>
     ${
         articles.map(
             article => {
