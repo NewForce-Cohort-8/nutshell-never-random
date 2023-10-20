@@ -3,8 +3,8 @@ import { articleHTML } from "./articles.js"
 
 export const Nutshell = () => {
 
-    LogOutButton()
-      // Render all your UI components here
-    articleHTML()
+    return `${LogOutButton()}
+
+    ${articleHTML()}`
 
 }
