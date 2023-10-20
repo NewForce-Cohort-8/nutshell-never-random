@@ -11,7 +11,7 @@ export const eventHTML = () => {
     ${
         events.map
         (event => {
-                return `<section class="article" id="article-${event.id}">
+                return `<section class="event" id="event-${event.id}">
                 <h2>${event.eventName}</h2>
                 <button><a href="${event.url}" target="_blank">Events</a></button>
                 <p><strong>Synopsis:</strong> ${event.location}</p>
@@ -37,6 +37,7 @@ dashboard.addEventListener("click", clickEvent => {
 
 export const eventForm = () => { 
     return`
+    <div class="article-container">
    <label for="new-event-date">Date</label>
   <input type="date" name="new-event-date" id="new-event-date" class="input">
 
@@ -46,7 +47,8 @@ export const eventForm = () => {
   <label for="new-event-location">Location</label>
   <input type="text" name="new-event-location" id="new-event-location" class="input"/>
 
-  <button id="createEvent" class="button">Add Event</button>`
+  <button id="createEvent" class="button">Add Event</button>
+  </div>`
 };
 
     // Saves new event to api.
