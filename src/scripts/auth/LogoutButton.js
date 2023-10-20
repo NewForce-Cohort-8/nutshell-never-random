@@ -2,7 +2,6 @@ import { LoginForm } from "./LoginForm.js"
 import { RegisterForm } from "./RegisterForm.js"
 
 const eventHub = document.querySelector(".dashboard")
-const contentTarget = document.querySelector(".dashboard")
 
 export const LogOutButton = () => {
 return `<button id="logout-button">Log Out</button>`

@@ -1,4 +1,4 @@
-
+// Tasks built by A-Nya :))
 
 import {getTasks, sendTask, deleteTask} from "./dataAccess.js";
 
@@ -30,7 +30,7 @@ export const taskHTML = () => {
                 return `<section class="task" id="task-${task.id}">
                 <p>${task.task}</p>
                 <div>
-                <input class="form-check-input" id="delete-${task.id}" type="checkbox" value="">
+                <input class="form-check-input" id="deleteTask-${task.id}" type="checkbox" value="">
               </div>
               
                 </section>
@@ -54,7 +54,7 @@ mainContainer.addEventListener("click", clickEvent => {
     }
    
   } 
-  if (clickEvent.target.id.startsWith("delete")){
+  if (clickEvent.target.id.startsWith("deleteTask")){
     const [,requestId] = clickEvent.target.id.split("-")
       deleteTask(parseInt(requestId))
      
