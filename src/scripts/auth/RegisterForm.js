@@ -2,6 +2,7 @@ import { Nutshell } from "../Nutshell.js";
 
 const contentTarget = document.querySelector(".auth--register");
 const eventHub = document.querySelector(".container");
+const mainContainer = document.querySelector(".dashboard")
 
 // When the user clicks on the register button
 eventHub.addEventListener("click", (e) => {
@@ -35,7 +36,7 @@ eventHub.addEventListener("click", (e) => {
                 document.querySelector(".auth--register").innerHTML = "";
 
                 // print the page
-                Nutshell();
+              Nutshell();
               });
           } else {
             // If the user does already exist, throw an alert
