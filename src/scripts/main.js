@@ -13,7 +13,6 @@ import { fetchArticles, fetchEvents, fetchImages, fetchMessages, fetchUsers } fr
 
 const activeUser = sessionStorage.getItem("activeUser")
 const mainContainer = document.querySelector(".dashboard")
-const mainContainer = document.querySelector(".dashboard")
 
 const render = () => {
     fetchArticles()

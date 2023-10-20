@@ -9,8 +9,6 @@ const applicationState =  {
 const API = "http://localhost:8088"
 const mainContainer = document.querySelector(".dashboard")
 
-const mainContainer = document.querySelector(".dashboard")
-
 
 export const fetchUsers = () => {
     return fetch(`${API}/users`)
