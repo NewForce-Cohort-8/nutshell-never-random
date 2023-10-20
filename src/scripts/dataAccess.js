@@ -77,3 +77,54 @@ export const getUsers  = () => {
 export const getTasks  = () => {
     return applicationState.tasks.map(task => ({...task}))
 }
+
+export const deleteArticle = (id) => {
+    return fetch(`${API}/articles/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
+
+export const saveArticle = (newArticle) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newArticle)
+    }
+
+
+    return fetch(`${API}/articles`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+
+        export const deleteImage = (id) => {
+            return fetch(`${API}/images/${id}`, { method: "DELETE" })
+                .then(
+                    () => {
+                        mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+                    }
+                )
+            }
+        
+            export const saveImage = (newImage) => {
+            const fetchOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newImage)
+            }
+            return fetch(`${API}/images`, fetchOptions)
+            .then(response => response.json())
+            .then(() => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            })
+        }
+

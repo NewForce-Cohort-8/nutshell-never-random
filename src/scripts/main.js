@@ -17,21 +17,29 @@ import { fetchTasks } from "./dataAccess.js"
 */
 
 const activeUser = sessionStorage.getItem("activeUser")
+const mainContainer = document.querySelector(".dashboard")
 
 const render = () => {
     fetchArticles()
-    fetchImages()
-    fetchMessages()
-    fetchUsers()
-    fetchTasks()
+    .then(fetchImages)
+    .then(fetchMessages)
+    .then(fetchUsers)
+    .then(fetchTasks)
     .then(() => {
         if(!activeUser){
             LoginForm()
             RegisterForm()
         } else {
-            Nutshell()
+           mainContainer.innerHTML = Nutshell()
         }
     })
 }
 
 render()
+
+mainContainer.addEventListener(
+    "stateChanged",
+    customEvent => {
+        render()
+    }
+)
