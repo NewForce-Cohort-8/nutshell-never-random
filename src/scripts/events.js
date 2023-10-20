@@ -1,4 +1,4 @@
-                // file coded by NH 
+                // File coded by NH. 
 
 import { getEvents, saveEvent, deleteEvent } from "./dataAccess.js";
 
@@ -23,7 +23,7 @@ export const eventHTML = () => {
     </div>`
 };
 
-    //delete event
+    // Delete event
 
 dashboard.addEventListener("click", clickEvent => {
     if(clickEvent.target.id.startsWith("delete-event--")){
@@ -33,7 +33,7 @@ dashboard.addEventListener("click", clickEvent => {
 }
 );
 
-    //create event form
+    // Create event form.
 
 export const eventForm = () => { 
     return`

@@ -64,7 +64,7 @@ export const getArticles = () => {
     return applicationState.articles.map(article => ({...article}))
 }
 
-      //Event stuff.- NH
+      // Event stuff. - NH
 export const getEvents = () => {
     return applicationState.events.map(event => ({...event}))
 }
